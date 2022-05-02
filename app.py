@@ -24,8 +24,3 @@ if place == None:
 unit=st.selectbox("Select Temperature Unit",("Celsius","Fahrenheit"))
 
 g_type=st.selectbox("Select Graph Type",("Line Graph","Bar Graph"))
-
-
-
-
-
