@@ -6,6 +6,7 @@ import requests
 import streamlit as st
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
 import matplotlib
 import tkinter
 import numpy
@@ -26,8 +27,7 @@ def getcurrloc():
 
 
 def getapidata(place):
-    api_key = os.environ['openweathermap_apikey']
-    api_link = "https://api.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + api_key
+    api_link = "https://api.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + os.getenv('api_key')
     api_data = requests.get(api_link)
     data = api_data.json()
     return data
@@ -60,6 +60,7 @@ def bargraph(place, days, temp_min, temp_max):
 
 
 def main():
+    load_dotenv()
 
     st.title("5 Day Weather Forecast")
     st.write("### Enter Location name and select Graph type from dropdown")
