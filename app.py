@@ -12,8 +12,7 @@ import tkinter
 import numpy
 
 
-
-load_dotenv()
+# load_dotenv()
 matplotlib.use('TkAgg')
 
 
@@ -38,26 +37,25 @@ def getapidata(place):
 
 
 def getfivedays():
-    days = {}
+    days = []
     a = datetime.today()
     for x in range (0, 5):
-        days[x] =  str((a + timedelta(days = x)).strftime("%d %b %Y"))
+        days.append(str((a + timedelta(days = x)).strftime("%d %b %Y")))
     return days
 
 
 def linegraph(place, days, temp_min, temp_max):
-    plt.plot(days.values(), temp_min, linewidth=2)
-    plt.plot(days.values(), temp_max, linewidth=2)
+    plt.plot(days, temp_min, linewidth=2)
+    plt.plot(days, temp_max, linewidth=2)
     plt.title(place)
     plt.show()
 
 
-def bargraph(place, days, temp_min, temp_max):
-    width = 2
-    dayst = days.keys()
+def bargraph(dayst, place, days, temp_min, temp_max):
+    width = 0.3
     plt.bar(dayst, temp_min, width, label='Min Temp')
     plt.bar(dayst + width, temp_max, width, label='Max Temp')
-    plt.xticks(dayst + width / 2, days.values())
+    plt.xticks(dayst + width / 2, days)
     plt.legend(loc='best')
     plt.title(place)
     plt.show()
@@ -79,14 +77,16 @@ def main():
         for i in range(0, data['cnt'], 8):
             temp_min.append(data['list'][i+5]['main']['temp_min'] - 273.17)
             temp_max.append(data['list'][i+1]['main']['temp_max'] - 273.17)
-            dayst.append(i)
+            dayst.append(int(i/8))
 
         days = getfivedays()
+
+        dayst = numpy.array(dayst)
 
         if(g_type == "Line Graph"):
             linegraph(place, days, temp_min, temp_max)
         elif(g_type == "Bar Graph"):
-            bargraph(place, days, temp_min, temp_max)
+            bargraph(dayst, place, days, temp_min, temp_max)
         
     else:
         print(data['message'])
