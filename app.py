@@ -1,13 +1,19 @@
 # streamlit run app.py
 # localhost:8501
 
-import os
+
 import requests
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 import matplotlib
 import tkinter
 import numpy
+
+
+import os
+api_key = os.environ['openweathermap_apikey']
+
+
 import streamlit as st
 # api_key = st.secrets["API_KEY"]
 
@@ -17,8 +23,8 @@ import streamlit as st
 # api_key = os.getenv('API_KEY')
 
 
-from boto.s3.connection import S3Connection
-api_key = S3Connection(os.environ['API_KEY'])
+# from boto.s3.connection import S3Connection
+# api_key = S3Connection(os.environ['API_KEY'])
 
 
 matplotlib.use('TkAgg')
