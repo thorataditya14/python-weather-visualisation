@@ -3,16 +3,24 @@
 
 import os
 import requests
-import streamlit as st
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
 import matplotlib
 import tkinter
 import numpy
+import streamlit as st
+# api_key = st.secrets["API_KEY"]
 
 
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
+# api_key = os.getenv('API_KEY')
+
+
+from boto.s3.connection import S3Connection
+api_key = S3Connection(os.environ['API_KEY'])
+
+
 matplotlib.use('TkAgg')
 
 
@@ -28,8 +36,6 @@ def getcurrloc():
 
 
 def getapidata(place):
-    api_key = os.getenv('API_KEY')
-    # api_key = st.secrets["API_KEY"]
     api_link = "https://api.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + api_key
     api_data = requests.get(api_link)
     data = api_data.json()
