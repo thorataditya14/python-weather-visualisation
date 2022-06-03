@@ -6,7 +6,7 @@ import requests
 import streamlit as st
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import matplotlib
 import tkinter
 import numpy
