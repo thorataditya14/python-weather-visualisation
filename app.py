@@ -6,11 +6,14 @@ import requests
 import streamlit as st
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
 import matplotlib
 import tkinter
 import numpy
 
 
+
+load_dotenv()
 matplotlib.use('TkAgg')
 
 
@@ -26,7 +29,8 @@ def getcurrloc():
 
 
 def getapidata(place):
-    api_key = '38f74c3046413d1188d9207708d0453f'
+    # api_key = os.getenv('API_KEY')
+    api_key = st.secrets["API_KEY"]
     api_link = "https://api.openweathermap.org/data/2.5/forecast?q=" + place + "&appid=" + api_key
     api_data = requests.get(api_link)
     data = api_data.json()
