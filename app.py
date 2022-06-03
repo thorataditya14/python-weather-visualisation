@@ -13,7 +13,7 @@ import numpy
 
 
 # load_dotenv()
-matplotlib.use('TkAgg')
+# matplotlib.use('TkAgg')
 
 
 def get_ip():
