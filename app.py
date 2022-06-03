@@ -14,6 +14,7 @@ import numpy
 
 # load_dotenv()
 # matplotlib.use('TkAgg')
+matplotlib.use('Qt5Agg')
 
 
 def get_ip():
