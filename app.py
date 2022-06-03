@@ -105,3 +105,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+'''
+requests==2.27.1
+streamlit==1.10.0
+matplotlib==3.5.2
+tk==0.1.0
+DateTime==4.4
+numpy==1.22.4
+'''
