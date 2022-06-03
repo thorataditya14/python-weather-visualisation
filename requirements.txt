@@ -2,5 +2,5 @@ requests
 streamlit
 matplotlib
 numpy
-tkinter
+tk
 DateTime
