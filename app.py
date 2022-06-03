@@ -13,8 +13,7 @@ import numpy
 
 
 # load_dotenv()
-# matplotlib.use('TkAgg')
-matplotlib.use('Qt5Agg')
+matplotlib.use('TkAgg')
 
 
 def get_ip():
