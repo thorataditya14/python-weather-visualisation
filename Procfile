@@ -1,1 +1,1 @@
-worker: streamlit run app.py
+web: gunicorn --pythonpath app app.wsgi
